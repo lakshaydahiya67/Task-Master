@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FastAPI Todo App</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="/static/css/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1><i class="fas fa-check-circle"></i> Task Master</h1>
+    <form id="todo-form">
+      <input type="text" id="title" placeholder="What needs to be done?" required />
+      <input type="text" id="description" placeholder="Add details..." required />
+      <button type="submit"><i class="fas fa-plus"></i> Add Task</button>
+    </form>
+    <div class="tasks-container">
+      <div class="loader"></div>
+      <ul id="todos"></ul>
+      <div id="empty-state" class="hidden">
+        <i class="fas fa-clipboard-list"></i>
+        <p>No tasks yet. Add your first task!</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Custom edit modal -->
+  <div id="edit-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2><i class="fas fa-edit"></i> Edit Task</h2>
+        <span class="close">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="edit-title">Title</label>
+          <input type="text" id="edit-title" required>
+        </div>
+        <div class="form-group">
+          <label for="edit-description">Description</label>
+          <textarea id="edit-description" required></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="cancel-edit" type="button">Cancel</button>
+        <button id="save-edit" type="button">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confirmation dialog -->
+  <div id="confirm-modal" class="modal">
+    <div class="modal-content confirm-content">
+      <div class="modal-header">
+        <h2><i class="fas fa-exclamation-triangle"></i> Confirm</h2>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete this task?</p>
+      </div>
+      <div class="modal-footer">
+        <button id="cancel-delete" type="button">Cancel</button>
+        <button id="confirm-delete" type="button">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast notification -->
+  <div id="toast" class="toast"></div>
+  
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
