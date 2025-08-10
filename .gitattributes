@@ -1,0 +1,5 @@
+# Tell GitHub to treat CSS files as documentation (not counted in language stats)
+*.css linguist-documentation=true
+
+# Also exclude static assets from language detection
+static/* linguist-documentation=true
